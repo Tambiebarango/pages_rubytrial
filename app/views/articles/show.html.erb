@@ -12,4 +12,6 @@
         <em>Created at: <%= @article[:created_at]%></em>
     </p>
     <p><%= link_to 'All articles', articles_path %></p>
+    <%= button_to "Edit", edit_article_path, :method => "get" %>
+    <%= button_to "Delete", article_path, :method => "delete", data: { confirm: 'Are you sure?' }%>
 </div>
