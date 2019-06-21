@@ -1,13 +1,16 @@
-<h1>Articles</h1>
+
+<br>
+<div class="jumbotron container">
+<h1 style="text-align:center">Articles</h1>
 <% if @article_list.any? %>
 
     <% @article_list.each do |article| %>
         <p>
-            Title: <%= article[:title] %>
+            <strong><%= article[:title] %></strong>
         </p>
 
         <p>
-            Description: <%= article[:description] %>
+            <%= article[:description] %>
         <p>
 
         <p>
@@ -16,3 +19,4 @@
         <br>
     <% end %>
 <% end %>
+</div>
