@@ -1,31 +1,6 @@
-<% if @article.errors.any? %>
-    <h4>Creation of the article failed for the following reasons: </h4>
-    <ul>
-        <% @article.errors.full_messages.each do |msg| %>    
-            <li> <%= msg %> </li>
-        <% end %>
-    </ul>
-
-<% end %>
 <br>
-<div class="jumbotron container"
+<div class="container jumbotron">
     <h3><strong> Create new article </strong></h3>
-    <br>
-    <br>
-
-    <%= form_for @article do |f| %>
-        <p>
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-        </p>
-
-        <p>
-            <%= f.label :description %>
-            <%= f.text_area :description %>
-        </p>
-        <p>
-            <%= f.submit %>
-        </p>
-        
-    <% end %>
+    <p></p>
+    <%= render 'form' %>
 </div>

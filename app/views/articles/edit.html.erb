@@ -2,21 +2,5 @@
 <div class="jumbotron container"
     <h3><strong> Edit the article </strong></h3>
     <br>
-    <br>
-
-    <%= form_for @article do |f| %>
-        <p>
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-        </p>
-
-        <p>
-            <%= f.label :description %>
-            <%= f.text_area :description %>
-        </p>
-        <p>
-            <%= f.submit %>
-        </p>
-        
-    <% end %>
+    <%= render 'form' %>
 </div>
