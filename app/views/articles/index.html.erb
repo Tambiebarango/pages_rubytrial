@@ -1,22 +1,18 @@
 
 <br>
-<div class="jumbotron container">
-<h1 style="text-align:center">Articles</h1>
-<% if @article_list.any? %>
+<div class="container">
+    <h3 class="heading" style="text-align:center"><strong>Articles</strong></h3>
+    <br>
+    <div align="center">
+        <%= will_paginate @article_list, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+    </div>
+    <% if @article_list.any? %>
 
-    <% @article_list.each do |article| %>
-        <p>
-            <strong><%= link_to article[:title],article_path(article)  %></strong>
-        </p>
-
-        <p>
-            <%= article[:description] %>
-        <p>
-
-        <p>
-            <em>Created at: <%= article[:created_at]%></em>
-        </p>
-        <br>
+        <%= render 'articles/article', obj:@article_list %>
     <% end %>
-<% end %>
+    <div align="center">
+        <%= will_paginate @article_list, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+    </div>
 </div>
+
+

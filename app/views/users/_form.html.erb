@@ -1,0 +1,51 @@
+<% if @user.errors.any? %>
+    <h4>This action failed for the following reasons: </h4>
+    <ul>
+        <% @user.errors.full_messages.each do |msg| %>    
+            <li> <%= msg %> </li>
+        <% end %>
+    </ul>
+
+<% end %>
+
+
+<%= form_for(@user, :html => {class: "form-horizontal", id:"signup_form", role: "form"}) do |f| %>
+    <div class="form-group">
+        <p></p>
+        <p>
+            <div class="col-lg-8">
+                <%= f.label :username %>
+            
+                <%= f.text_field :username, class: "form-control", placeholder: "Enter your username", autofocus: true %>
+            </div>
+        </p>
+    </div>
+    <div class="form-group">
+        <p></p>
+        <p>
+            <div class="col-lg-8">
+                <%= f.label :email %>
+            
+                <%= f.email_field :email, class: "form-control", placeholder: "Enter your email" %>
+            </div>
+        </p>
+    </div>
+    <div class="form-group">
+        <p></p>
+        <p>
+            <div class="col-lg-8">
+                <%= f.label :password %>
+            
+                <%= f.password_field :password, class: "form-control" %>
+            </div>
+        </p>
+    </div>
+    
+    <div class="col-lg-8"
+        <p>
+            <%= f.submit(@user.new_record?? "Signup":"Edit your account", class:"btn btn-success btn-lg") %>
+        </p>
+    </div>
+    
+    
+<% end %>

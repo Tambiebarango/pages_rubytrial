@@ -1,17 +1,26 @@
 <br>
-<div class="container jumbotron">
+<p></p>
+<div align="center" class="container">
+    <h3 class="heading">
+    <strong><%= @article[:title] %></strong>
+    </h3>
+</div>
+<div align="center" class="article_show container card col-xs-8 col-xs-offset-2">
+    
     <p>
-        <strong><%= @article[:title] %></strong>
-    </p>
+        <%= simple_format(@article[:description]) %>
+    <p>
 
-    <p>
-        <%= @article[:description] %>
-    <p>
-
-    <p>
-        <em>Created at: <%= @article[:created_at]%></em>
-    </p>
-    <p><%= link_to 'All articles', articles_path %></p>
-    <%= button_to "Edit", edit_article_path, :method => "get" %>
-    <%= button_to "Delete", article_path, :method => "delete", data: { confirm: 'Are you sure?' }%>
+    <small>
+        <em>Created by <%= link_to @article.user.username, user_path(@article.user)%> 
+            <%= time_ago_in_words(@article[:created_at])%> ago</em>
+    </small>
+    <% if logged_in? and @article.user_id == current_user[:id]%>
+        <div style="display:inline">
+            <%= link_to "Edit", edit_article_path(@article), class:"btn btn-primary", id:"button_inline" %>
+            <%= link_to "Delete", article_path, :method => "delete", data: { confirm: 'Are you sure?' }, class:"btn btn-danger",id:"button_inline"%>
+        </div>
+    <%end%>
+    <br>
+    <p>[<%= link_to 'See all articles', articles_path %>]</p>
 </div>

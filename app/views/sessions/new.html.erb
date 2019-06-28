@@ -1,0 +1,40 @@
+<br>
+<h3 class="heading" align="center"><strong>Log in</strong></h3>
+<div class="container">
+    <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
+
+        <div class="login-form-group">
+            <p></p>
+            <p>
+                <div class="col-lg-8">
+                    <%= f.label :email %>
+                
+                    <%= f.email_field :email, class: "form-control", placeholder: "Enter your email" %>
+                </div>
+            </p>
+        </div>
+        <div class="login-form-group">
+            <p></p>
+            <p>
+                <div class="col-lg-8">
+                    <%= f.label :password %>
+                
+                    <%= f.password_field :password, class: "form-control" %>
+                </div>
+            </p>
+        </div>
+    
+        <div class="col-lg-8 login-form-group"
+            <p>
+                <%= f.submit("Login", class:"btn btn-primary btn-md") %>
+            </p>
+        </div>
+
+    <% end %>
+
+    <div class="col-xs-4 col-xs-offset-4 login-form-group">
+
+        <%= link_to "Cancel request and return to articles listing", articles_path %>
+
+    </div>
+</div> 

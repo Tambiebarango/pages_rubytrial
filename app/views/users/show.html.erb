@@ -1,0 +1,22 @@
+    <br>
+    <div class="container">
+    
+    <h3 class="heading" align="center"><strong>Welcome to <%= @user.username %>'s page</strong></h3>
+    <br>
+    <% if @user_articles.count > 0 %>
+
+        <h4 align="center"><%= @user.username %>'s articles:</h4>
+        <br>
+        <div align="center">
+            <%= will_paginate @user_articles, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+
+        </div>
+        <%= render 'articles/article', obj: @user_articles %>
+        <div align="center">
+        <%= will_paginate @user_articles, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+        </div>
+    <% else %>
+        <h4 align="center"><em><%= @user.username %> does not have any articles</em></h4>
+    <% end %>
+    <p align="center"><%=link_to "Return back to all users", users_path %></p>
+    </div>

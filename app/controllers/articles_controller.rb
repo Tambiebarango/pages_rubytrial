@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+
     def index
-        @article_list = Article.all
+        @article_list = Article.paginate(page: params[:page], per_page: 3)
     end
 
     def new
@@ -9,25 +13,23 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
+        @article.user_id = session[:user_id]
         if @article.save
-            flash[:notice] = "Article was successfully created"
+            flash.now[:success] = "Article was successfully created"
             redirect_to article_path(@article)
         else
+            flash.now[:error] = "Something went wrong, try again."
             render 'new'
         end
     end
 
     def show
-        @article = Article.find(params[:id])
-
     end
 
     def edit
-        @article = Article.find(params[:id])
     end
 
     def update
-        @article = Article.find(params[:id])
         permitted_attributes = params.require(:article).permit(:title, :description)
         @article.update_attributes(permitted_attributes)
 
@@ -35,7 +37,6 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id])
         @article.destroy
 
         redirect_to articles_path
@@ -43,6 +44,17 @@ class ArticlesController < ApplicationController
     private
         def article_params
             params.require(:article).permit(:title, :description)
+        end
+
+        def set_article
+            @article = Article.find(params[:id])
+        end
+
+        def require_same_user
+            if logged_in? and @article.user_id != current_user[:id]
+                flash[:error] = "You can only update your own articles!"
+                redirect_to root_path
+            end
         end
     
    

@@ -1,0 +1,71 @@
+.navbar-brand{
+    font-family: 'Rock Salt', cursive;
+    
+}
+
+.heading{
+    font-family: 'Rock Salt', cursive;
+    color: blue
+    
+}
+#pages{
+    color: blue;
+}
+
+#signup{
+    background-color: blue;
+    border-color: white
+}
+
+#signup_form{
+    margin-left: 300px
+}
+
+.gravatar{
+    border-radius: 50%;
+    text-align: center;
+}
+
+.article_show{
+    margin-top: 50px
+}
+
+.canvas{
+    background-image: url('another.jpeg');
+    background-size: cover;
+    height:550px;
+    width:550px;
+    margin-top:20px;
+    /* margin-bottom: -10px; */
+    opacity: 0.8;
+    border-radius:1.8%
+    
+}
+footer {
+    margin-top: 20px;
+    padding-top: 5px;
+    /* border-top: 1px solid #eaeaea; */
+    color: #777;
+}
+
+footer a:hover {    
+    color: #222;
+    }
+    
+footer small {
+    float: left;    
+}
+    
+footer ul {
+    float: right;
+    list-style: none;
+}
+    
+footer ul li {
+    float: left;
+    margin-left: 15px;
+}
+
+.login-form-group{
+    margin-left: 30%;
+}
