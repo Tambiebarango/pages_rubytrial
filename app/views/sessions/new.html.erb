@@ -3,7 +3,7 @@
 <div class="container">
     <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
 
-        <div class="login-form-group">
+        <div class="form-row justify-content-sm-center">
             <p></p>
             <p>
                 <div class="col-lg-8">
@@ -13,7 +13,8 @@
                 </div>
             </p>
         </div>
-        <div class="login-form-group">
+        <br>
+        <div class="form-row justify-content-sm-center">
             <p></p>
             <p>
                 <div class="col-lg-8">
@@ -23,8 +24,8 @@
                 </div>
             </p>
         </div>
-    
-        <div class="col-lg-8 login-form-group"
+        <br>
+        <div align="center">
             <p>
                 <%= f.submit("Login", class:"btn btn-primary btn-md") %>
             </p>
@@ -32,9 +33,9 @@
 
     <% end %>
 
-    <div class="col-xs-4 col-xs-offset-4 login-form-group">
+    <div align="center">
 
-        <%= link_to "Cancel request and return to articles listing", articles_path %>
+        <small><%= link_to "Cancel request and return to articles listing", articles_path %></small>
 
     </div>
 </div> 
