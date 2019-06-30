@@ -15,7 +15,7 @@
         <em>Created by <%= link_to @article.user.username, user_path(@article.user)%> 
             <%= time_ago_in_words(@article[:created_at])%> ago</em>
     </small>
-    <% if logged_in? and @article.user_id == current_user[:id]%>
+    <% if logged_in? and (@article.user_id == current_user[:id] or current_user.admin?)%>
         <div style="display:inline">
             <%= link_to "Edit", edit_article_path(@article), class:"btn btn-primary", id:"button_inline" %>
             <%= link_to "Delete", article_path, :method => "delete", data: { confirm: 'Are you sure?' }, class:"btn btn-danger",id:"button_inline"%>
