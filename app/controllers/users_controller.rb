@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-    before_action :set_user, only:[:show, :edit, :update, :destroy]
-    before_action :require_user, only: [:edit, :update, :destroy]
-    before_action :require_same_user, only: [:edit, :update, :destroy]
+    before_action :set_user, only:[:show, :edit, :update]
+    before_action :require_user, only: [:edit, :update]
+    before_action :require_same_user, only: [:edit, :update]
+    before_action :require_admin, only:[:destroy]
     
     def index
         @user_list = User.paginate(page: params[:page], per_page: 3)
@@ -68,6 +69,13 @@ class UsersController < ApplicationController
     def require_same_user
         if @user.id != current_user[:id]
             flash[:error] = "You can only perform this action on your profile!"
+        end
+    end
+
+    def require_admin
+        if logged_in? and @user.admin?
+            flash[:error] = "Only admins can perform that action."
+            redirect_to root_path
         end
     end
 end
