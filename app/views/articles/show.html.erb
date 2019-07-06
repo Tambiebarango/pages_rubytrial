@@ -4,6 +4,12 @@
     <h3 class="heading">
     <strong><%= @article[:title] %></strong>
     </h3>
+
+<% if @article.categories.any? %>
+    <% @article.categories.each do |category| %>
+        <span class="badge badge-warning"><%= link_to category.name.upcase, category_path(category)%></span>&nbsp
+    <% end %>
+<%end%>
 </div>
 <div align="center" class="article_show container card col-xs-8 col-xs-offset-2">
     

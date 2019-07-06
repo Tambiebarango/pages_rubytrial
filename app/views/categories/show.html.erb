@@ -1,0 +1,20 @@
+<br>
+<div class="container">
+
+<h3 class="heading" align="center"><strong>Articles about <%= @category.name %></strong></h3>
+<br>
+<% if @category_articles.count > 0 %>
+
+    <div align="center">
+        <%= will_paginate @category_articles, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+
+    </div>
+    <%= render 'articles/article', obj: @category_articles %>
+    <div align="center">
+    <%= will_paginate @category_articles, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+    </div>
+<% else %>
+    <h4 align="center"><em>There are no articles about <%= @category.name %></em></h4>
+<% end %>
+<p align="center"><%=link_to "Return back to all categories", categories_path %></p>
+</div>

@@ -1,0 +1,45 @@
+
+<br>
+<div class="container">
+    <h3 class="heading" style="text-align:center"><strong>Categories</strong></h3>
+    <br>
+    
+    <% if @categories.any? %>
+        <div align="center">
+            <%= will_paginate @categories, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+        </div>
+        <% @categories.each do |category| %>
+
+            <div align="center">
+            
+                <div class="col-sm-7">
+            
+                    <div class="card">
+                        <div class="card-body">
+            
+                            <div class="username">
+            
+                                <h2><%= link_to category.name, category_path(category) %></h2>
+                                <small> <%=pluralize(category.articles.count, "article") %></small>
+            
+                            </div>
+            
+                            
+                            
+            
+                        </div>
+            
+                    </div>
+            
+                </div>
+                <br>
+            </div>
+        <% end %>
+    <div align="center">
+        <%= will_paginate @categories, list_classes: %w(pagination justify-content-center), previous_label: "Previous", next_label: "Next" %> 
+    </div>
+    <% end %>
+    
+</div>
+
+

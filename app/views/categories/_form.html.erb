@@ -1,0 +1,31 @@
+<% if @category.errors.any? %>
+    <h4>This action failed for the following reasons: </h4>
+    <ul>
+        <% @category.errors.full_messages.each do |msg| %>    
+            <li> <%= msg %> </li>
+        <% end %>
+    </ul>
+
+<% end %>
+
+
+
+<%= form_for(@category, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <br>
+    <div class="form-group form-row justify-content-sm-center">
+        <p></p>
+        <br>
+        <p class="row">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control-customized", style: "display:inline", placeholder: "Category name", autofocus: true %>
+        </p>
+
+        
+    </div>
+
+    <div class="form-group form-row justify-content-sm-center">
+        <p class="row">
+                <%= f.submit class:"btn btn-success btn-sm" %>
+        </p>
+    </div>
+<%end%>

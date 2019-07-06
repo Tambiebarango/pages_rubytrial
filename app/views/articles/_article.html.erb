@@ -17,6 +17,13 @@
     
     <%= truncate(article.description, length: 100) %>
     
+    <div>
+    <% if article.categories.any? %>
+        <% article.categories.each do |category| %>
+            <small><span class="badge badge-warning"><%= link_to category.name.upcase, category_path(category)%></span></small>&nbsp
+        <% end %>
+    <%end%>
+    </div>
     <div class="article-meta-details">
     
     <small>Created by: <%= link_to article.user.username, user_path(article.user)%>,
